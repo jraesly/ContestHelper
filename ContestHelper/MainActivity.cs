@@ -34,7 +34,9 @@ namespace ContestHelper
 
 			};
 		}
-	[Activity (Label = "ContestHelper", 
+	[Activity (Label = "Second Screen", MainLauncher = true)]
+	public class
+
 
 	}
 }
