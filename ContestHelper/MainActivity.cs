@@ -36,9 +36,10 @@ namespace ContestHelper
 		}
 	[Activity (Label = "Second Screen", MainLauncher = true)]
 	public class
-
+	{
 
 	}
 }
+
 
 

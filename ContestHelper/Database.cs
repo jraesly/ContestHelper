@@ -58,7 +58,7 @@ namespace ContestHelper
 				if(!sqldb_exists)
 				{
 					sqldb = SQLiteDatabase.OpenOrCreateDatabase(sqldb_path,null);
-					sqldb_query = "CREATE TABLE IF NOT EXISTS MyTable (_id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR, LastName VARCHAR, Age INT);";
+					sqldb_query = "CREATE TABLE IF NOT EXISTS MyTable (First Name TEXT, Last Name TEXT, Email BLOB, Phonenumber BLOB);";
 					sqldb.ExecSQL(sqldb_query);
 					sqldb_message = "Database: " + sqldb_name + " created";
 				}
