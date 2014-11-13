@@ -26,17 +26,12 @@ namespace ContestHelper
 			Button choosedate = FindViewById<Button>(Resource.Id.Choosedate);
 			Button addcontest = FindViewById<Button>(Resource.Id.Addcontest);
 
-			choosedate.Click += (object sender, EventArgs e) =>
-			{
-				var datechosen = new AlertDialog.Builder(this);
+			choosedate.Click += (object sender, EventArgs e) => {
+				var chosendate = new Intent (this, typeof(chosenDate));
 
-			};
-
+				StartActivity (chosendate);
 			};
 		}
-	[Activity (Label = "Second Screen", MainLauncher = true)]
-	public class
-	{
 
 	}
 }

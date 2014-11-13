@@ -1,13 +1,16 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ContestHelper\Database.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ContestHelper\Resources\Resource.designer.cs">
     <Files>
-      <File FileName="ContestHelper\MainActivity.cs" Line="1" Column="1" />
-      <File FileName="ContestHelper\Database.cs" Line="5" Column="5" />
+      <File FileName="ContestHelper\MainActivity.cs" Line="40" Column="40" />
+      <File FileName="ContestHelper\ChosenDate.cs" Line="27" Column="27" />
+      <File FileName="ContestHelper\Resources\Resource.designer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\John\Documents\jraesly\ContestHelper.git\ContestHelper\ChooseDate.cs" line="18" column="19" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.ContestHelper MonoForAntroid.PreferredDevice="Nexus 4" />
