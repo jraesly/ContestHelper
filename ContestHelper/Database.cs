@@ -58,7 +58,7 @@ namespace ContestHelper
 				if(!sqldb_exists)
 				{
 					sqldb = SQLiteDatabase.OpenOrCreateDatabase(sqldb_path,null);
-					sqldb_query = "CREATE TABLE IF NOT EXISTS MyTable (First Name TEXT, Last Name TEXT, Email BLOB, Phonenumber BLOB);";
+					sqldb_query = "CREATE TABLE IF NOT EXISTS MyTable (FirstName TEXT, LastName TEXT, Email BLOB, Phonenumber BLOB);";
 					sqldb.ExecSQL(sqldb_query);
 					sqldb_message = "Database: " + sqldb_name + " created";
 				}
@@ -75,11 +75,11 @@ namespace ContestHelper
 			}
 		}
 		//Adds a new record with the given parameters
-		public void AddRecord(string sName, string sLastName, int iAge)
+		public void AddRecord(string sFirstName, string sLastName, string sEmail, int iPhone)
 		{
 			try
 			{
-				sqldb_query = "INSERT INTO MyTable (Name, LastName, Age) VALUES ('" + sName + "','" + sLastName + "'," + iAge + ");";
+				sqldb_query = "INSERT INTO MyTable (FirstName, LastName, Email, Phone) VALUES ('" + sFirstName + "','" + sLastName + "', " + sEmail + ", " + iPhone + ");";
 				sqldb.ExecSQL(sqldb_query);
 				sqldb_message = "Record saved";
 			}
@@ -89,13 +89,13 @@ namespace ContestHelper
 			}
 		}
 		//Updates an existing record with the given parameters depending on id parameter
-		public void UpdateRecord(int iId, string sName, string sLastName, int iAge)
+		public void UpdateRecord(string sFirstName, string sLastName, string sEmail, int iPhone)
 		{
 			try
 			{
-				sqldb_query="UPDATE MyTable SET Name ='" + sName + "', LastName ='" + sLastName + "', Age ='" + iAge + "' WHERE _id ='" + iId + "';";
+				sqldb_query="UPDATE MyTable SET FirstName ='" + sFirstName + "', LastName ='" + sLastName + "', Email ='" + sEmail + "', Phone ='" + iPhone + "';";
 				sqldb.ExecSQL(sqldb_query);
-				sqldb_message = "Record " + iId + " updated";
+				sqldb_message = "Record updated";
 			}
 			catch(SQLiteException ex)
 			{
@@ -103,13 +103,13 @@ namespace ContestHelper
 			}
 		}
 		//Deletes the record associated to id parameter
-		public void DeleteRecord(int iId)
+		public void DeleteRecord(string sFirstName)
 		{
 			try
 			{
-				sqldb_query = "DELETE FROM MyTable WHERE _id ='" + iId + "';";
+				sqldb_query = "DELETE FROM MyTable WHERE FirstName ='" + sFirstName + "';";
 				sqldb.ExecSQL(sqldb_query);
-				sqldb_message = "Record " + iId + " deleted";
+				sqldb_message = "Record Deleted";
 			}
 			catch(SQLiteException ex) 
 			{

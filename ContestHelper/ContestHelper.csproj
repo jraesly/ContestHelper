@@ -67,6 +67,7 @@
     <AndroidResource Include="Resources\drawable\save.png" />
     <AndroidResource Include="Resources\drawable\search.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\layout\Addnewevent.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Readify.Xamarin.MSBuild.Android.1.1.0\build\Readify.Xamarin.MSBuild.Android.targets" Condition="Exists('..\packages\Readify.Xamarin.MSBuild.Android.1.1.0\build\Readify.Xamarin.MSBuild.Android.targets')" />
