@@ -31,6 +31,10 @@ namespace ContestHelper
 
 				StartActivity (chosendate);
 			};
+			addcontest.Click += (object sender, EventArgs e) => {
+				var addevent = new Intent (this, typeof(addnewevent));
+				StartActivity (addevent);
+			};
 		}
 
 	}
