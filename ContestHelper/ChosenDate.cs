@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace ContestHelper
 {
-	[Activity (Label = "Contest Helper")]            
+	[Activity (Label = "Contest Helper", Icon="@drawable/Icon")]            
 	public class chosenDate : Activity
 	{
 		protected override void OnCreate (Bundle bundle)

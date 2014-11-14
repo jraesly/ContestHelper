@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace ContestHelper
 {
-	[Activity (Label = "Contest Helper", MainLauncher = true)]
+	[Activity (Label = "Contest Helper", MainLauncher = true, Icon="@drawable/Icon")]
 	public class MainActivity : Activity
 	{
 
