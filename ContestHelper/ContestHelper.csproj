@@ -60,9 +60,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\Datelist.axml" />
     <AndroidResource Include="Resources\layout\Recordslayout.axml" />
+    <AndroidResource Include="Resources\drawable\add.png" />
+    <AndroidResource Include="Resources\drawable\delete.png" />
+    <AndroidResource Include="Resources\drawable\save.png" />
+    <AndroidResource Include="Resources\drawable\search.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Readify.Xamarin.MSBuild.Android.1.1.0\build\Readify.Xamarin.MSBuild.Android.targets" Condition="Exists('..\packages\Readify.Xamarin.MSBuild.Android.1.1.0\build\Readify.Xamarin.MSBuild.Android.targets')" />
