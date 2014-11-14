@@ -1,26 +1,28 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+//Required assemblies
+using Android.Database.Sqlite;
+using System.IO;
+
 
 namespace ContestHelper
 {
 	//Main activity for app launching
-	[Activity (Label = "Contest Helper")]
+	[Activity (Label = "Contest Helper", Icon="@drawable/Icon")]
 	public class addnewevent : Activity
 	{
 		//Database class new object
 		Database sqldb;
 		//Name, LastName and Age EditText objects for data input
-		EditText txtFirstname, txtLastname, txtEmail, txtnumber;
+		EditText txtName, txtAge, txtLastName;
 		//Message TextView object for displaying data
 		TextView shMsg;
 		//Add, Edit, Delete and Search ImageButton objects for events handling
@@ -31,10 +33,10 @@ namespace ContestHelper
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			ActionBar.SetHomeButtonEnabled (true);
+			ActionBar.SetDisplayHomeAsUpEnabled (true);
 			//Set our Main layout as default view
 			SetContentView (Resource.Layout.Addnewevent);
-			ActionBar.SetHomeButtonEnabled(true);
-			ActionBar.SetDisplayHomeAsUpEnabled(true);
 			//Initializes new Database class object
 			sqldb = new Database("person_db");
 			//Gets ImageButton object instances
@@ -43,10 +45,9 @@ namespace ContestHelper
 			imgEdit = FindViewById<ImageButton> (Resource.Id.imgEdit);
 			imgSearch = FindViewById<ImageButton> (Resource.Id.imgSearch);
 			//Gets EditText object instances
-			txtnumber = FindViewById<EditText> (Resource.Id.txtnumber);
-			txtEmail = FindViewById<EditText> (Resource.Id.txtEmail);
-			txtLastname = FindViewById<EditText> (Resource.Id.txtLastname);
-			txtFirstname = FindViewById<EditText> (Resource.Id.txtFirstname);
+			txtAge = FindViewById<EditText> (Resource.Id.txtAge);
+			txtLastName = FindViewById<EditText> (Resource.Id.txtLastName);
+			txtName = FindViewById<EditText> (Resource.Id.txtName);
 			//Gets TextView object instances
 			shMsg = FindViewById<TextView> (Resource.Id.shMsg);
 			//Gets ListView object instance
@@ -56,47 +57,48 @@ namespace ContestHelper
 			//Creates ImageButton click event for imgAdd, imgEdit, imgDelete and imgSearch
 			imgAdd.Click += delegate {
 				//Calls function AddRecord for adding a new record
-				sqldb.AddRecord (txtFirstname.Text, txtLastname.Text, txtEmail.Text, int.Parse (txtnumber.Text));
+				sqldb.AddRecord (txtName.Text, txtLastName.Text, int.Parse (txtAge.Text));
 				shMsg.Text = sqldb.Message;
-				txtFirstname.Text = txtLastname.Text = txtEmail.Text = txtnumber.Text = "";
+				txtName.Text = txtAge.Text = txtLastName.Text = "";
 				GetCursorView();
 			};
 
 			imgEdit.Click += delegate {
-				int iPhone = int.Parse(shMsg.Text);
+				int iId = int.Parse(shMsg.Text);
 				//Calls UpdateRecord function for updating an existing record
-				sqldb.UpdateRecord (txtFirstname.Text, txtLastname.Text, txtEmail.Text, int.Parse (txtnumber.Text));
+				sqldb.UpdateRecord (iId, txtName.Text, txtLastName.Text, int.Parse (txtAge.Text));
 				shMsg.Text = sqldb.Message;
-				txtFirstname.Text = txtLastname.Text = txtEmail.Text = txtnumber.Text = "";
+				txtName.Text = txtAge.Text = txtLastName.Text = "";
 				GetCursorView();
+
 			};
 
 			imgDelete.Click += delegate {
-				int iPhone = int.Parse(shMsg.Text);
+				int iId = int.Parse(shMsg.Text);
 				//Calls DeleteRecord function for deleting the record associated to id parameter
-				sqldb.DeleteRecord (iPhone);
+				sqldb.DeleteRecord (iId);
 				shMsg.Text = sqldb.Message;
-				txtFirstname.Text = txtLastname.Text = txtEmail.Text = txtnumber.Text = "";
+				txtName.Text = txtAge.Text = txtLastName.Text = "";
 				GetCursorView();
 			};
 
 			imgSearch.Click += delegate {
 				//Calls GetCursorView function for searching all records or single record according to search criteria
 				string sqldb_column = "";
-				if (txtFirstname.Text.Trim () != "") 
+				if (txtName.Text.Trim () != "") 
 				{
-					sqldb_column = "Firstname";
-					GetCursorView (sqldb_column, txtFirstname.Text.Trim ());
+					sqldb_column = "Name";
+					GetCursorView (sqldb_column, txtName.Text.Trim ());
 				} else
-					if (txtLastname.Text.Trim () != "") 
+					if (txtLastName.Text.Trim () != "") 
 					{
 						sqldb_column = "LastName";
-						GetCursorView (sqldb_column, txtLastname.Text.Trim ());
+						GetCursorView (sqldb_column, txtLastName.Text.Trim ());
 					} else
-						if (txtnumber.Text.Trim () != "") 
+						if (txtAge.Text.Trim () != "") 
 						{
-							sqldb_column = "Phone";
-							GetCursorView (sqldb_column, txtnumber.Text.Trim ());
+							sqldb_column = "Age";
+							GetCursorView (sqldb_column, txtAge.Text.Trim ());
 						} else 
 						{
 							GetCursorView ();
@@ -107,30 +109,18 @@ namespace ContestHelper
 			//Add ItemClick event handler to ListView instance
 			listItems.ItemClick += new EventHandler<AdapterView.ItemClickEventArgs> (item_Clicked);
 		}
-		public override bool OnOptionsItemSelected(IMenuItem item)
-		{
-			switch (item.ItemId)
-			{
-			case Android.Resource.Id.Home:
-				Finish();
-				return true;
-
-			default:
-				return base.OnOptionsItemSelected(item);
-			}
-		}
 		//Launched when a ListView item is clicked
 		void item_Clicked (object sender, AdapterView.ItemClickEventArgs e)
 		{
 			//Gets TextView object instance from record_view layout
-			TextView shId = e.View.FindViewById<TextView> (Resource.Id.Firstname_row);
-			TextView shName = e.View.FindViewById<TextView> (Resource.Id.Lastname_row);
-			TextView shLastName = e.View.FindViewById<TextView> (Resource.Id.Email_row);
-			TextView shAge = e.View.FindViewById<TextView> (Resource.Id.Phone_row);
+			TextView shId = e.View.FindViewById<TextView> (Resource.Id.Id_row);
+			TextView shName = e.View.FindViewById<TextView> (Resource.Id.Name_row);
+			TextView shLastName = e.View.FindViewById<TextView> (Resource.Id.LastName_row);
+			TextView shAge = e.View.FindViewById<TextView> (Resource.Id.Age_row);
 			//Reads values and sets to EditText object instances
-			txtFirstname.Text = shName.Text;
-			txtLastname.Text = shLastName.Text;
-			txtnumber.Text = shAge.Text;
+			txtName.Text = shName.Text;
+			txtLastName.Text = shLastName.Text;
+			txtAge.Text = shAge.Text;
 			//Displays messages for CRUD operations
 			shMsg.Text = shId.Text;
 		}
@@ -141,15 +131,15 @@ namespace ContestHelper
 			if (sqldb_cursor != null) 
 			{
 				sqldb_cursor.MoveToFirst ();
-				string[] from = new string[] {"Firstname","Lastname","Email","Phone" };
+				string[] from = new string[] {"_id","Name","LastName","Age" };
 				int[] to = new int[] {
-					Resource.Id.Firstname_row,
-					Resource.Id.Lastname_row,
-					Resource.Id.Email_row,
-					Resource.Id.Phone_row
+					Resource.Id.Id_row,
+					Resource.Id.Name_row,
+					Resource.Id.LastName_row,
+					Resource.Id.Age_row
 				};
 				//Creates a SimplecursorAdapter for ListView object
-				SimpleCursorAdapter sqldb_adapter = new SimpleCursorAdapter (this, Resource.Layout.Recordslayout, sqldb_cursor, from, to);
+				SimpleCursorAdapter sqldb_adapter = new SimpleCursorAdapter(this, Resource.Layout.Recordslayout, sqldb_cursor, from, to);
 				listItems.Adapter = sqldb_adapter;
 			} 
 			else 
@@ -165,13 +155,13 @@ namespace ContestHelper
 			if (sqldb_cursor != null) 
 			{
 				sqldb_cursor.MoveToFirst ();
-				string[] from = new string[] {"Firstname","Lastname","Email","Phone" };
+				string[] from = new string[] {"_id","Name","LastName","Age" };
 				int[] to = new int[] 
 				{
-					Resource.Id.Firstname_row,
-					Resource.Id.Lastname_row,
-					Resource.Id.Email_row,
-					Resource.Id.Phone_row
+					Resource.Id.Id_row,
+					Resource.Id.Name_row,
+					Resource.Id.LastName_row,
+					Resource.Id.Age_row
 				};
 				SimpleCursorAdapter sqldb_adapter = new SimpleCursorAdapter (this, Resource.Layout.Recordslayout, sqldb_cursor, from, to);
 				listItems.Adapter = sqldb_adapter;

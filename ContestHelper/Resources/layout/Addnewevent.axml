@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="#ff004150">
         <TextView
-            android:text="First Name"
+            android:text="Name"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
@@ -29,16 +29,7 @@
             android:textColor="#ffffffff"
             android:textStyle="bold" />
         <TextView
-            android:text="Email"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="#ffffffff" />
-        <TextView
-            android:text="Phone"
+            android:text="Age"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
@@ -55,26 +46,19 @@
         android:layout_height="wrap_content"
         android:background="#ff004185">
         <EditText
-            android:inputType="text"
-            android:id="@+id/txtFirstname"
+            android:inputType="textPersonName"
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
         <EditText
-            android:inputType="text"
-            android:id="@+id/txtLastname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-        <EditText
-            android:inputType="text"
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
         <EditText
             android:inputType="number"
-            android:id="@+id/txtnumber"
+            android:id="@+id/txtAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -141,41 +125,41 @@
         android:background="#ff004150"
         android:gravity="center">
         <TextView
-            android:text="First Name"
+            android:text="ID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="20dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:id="@+id/firstname" />
+            android:id="@+id/id" />
+        <TextView
+            android:text="Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:id="@+id/name" />
         <TextView
             android:text="Last Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            android:id="@+id/lastname" />
-        <TextView
-            android:text="Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="20dp"
-            android:id="@+id/email" />
+            android:id="@+id/last" />
         <TextView
-            android:text="Phone"
+            android:text="Age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:layout_weight="1"
             android:textSize="20dp"
             android:gravity="center"
-            android:id="@+id/phone" />
+            android:id="@+id/age" />
     </LinearLayout>
     <ListView
         android:minWidth="25px"
