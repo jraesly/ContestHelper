@@ -50,6 +50,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="Randomizer.cs" />
     <Compile Include="ChosenDate.cs" />
+    <Compile Include="addnewevent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

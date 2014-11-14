@@ -103,11 +103,11 @@ namespace ContestHelper
 			}
 		}
 		//Deletes the record associated to id parameter
-		public void DeleteRecord(string sFirstName)
+		public void DeleteRecord(int iPhone)
 		{
 			try
 			{
-				sqldb_query = "DELETE FROM MyTable WHERE FirstName ='" + sFirstName + "';";
+				sqldb_query = "DELETE FROM MyTable WHERE Phone ='" + iPhone + "';";
 				sqldb.ExecSQL(sqldb_query);
 				sqldb_message = "Record Deleted";
 			}
