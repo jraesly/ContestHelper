@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace ContestHelper
 {
-	[Activity (Label = "First Screen", MainLauncher = true)]
+	[Activity (Label = "Contest Helper", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
 

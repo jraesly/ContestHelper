@@ -9,17 +9,30 @@ using Android.OS;
 
 namespace ContestHelper
 {
-	[Activity (Label = "Second Screen")]            
+	[Activity (Label = "Contest Helper")]            
 	public class chosenDate : Activity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-		// Set the view from the "Datelist" layout resource
+			// Set the view from the "Datelist" layout resource
 			SetContentView (Resource.Layout.Datelist);
+			ActionBar.SetHomeButtonEnabled (true);
+			ActionBar.SetDisplayHomeAsUpEnabled (true);
+		}
+			public override bool OnOptionsItemSelected(IMenuItem item)
+			{
+				switch (item.ItemId)
+				{
+				case Android.Resource.Id.Home:
+					Finish();
+					return true;
 
+				default:
+					return base.OnOptionsItemSelected(item);
+				}
+			}
 
 		}
 	}
-}

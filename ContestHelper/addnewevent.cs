@@ -14,7 +14,7 @@ using Android.Widget;
 namespace ContestHelper
 {
 	//Main activity for app launching
-	[Activity (Label = "ContestHelper")]
+	[Activity (Label = "Contest Helper")]
 	public class addnewevent : Activity
 	{
 		//Database class new object
@@ -33,6 +33,8 @@ namespace ContestHelper
 			base.OnCreate (bundle);
 			//Set our Main layout as default view
 			SetContentView (Resource.Layout.Addnewevent);
+			ActionBar.SetHomeButtonEnabled(true);
+			ActionBar.SetDisplayHomeAsUpEnabled(true);
 			//Initializes new Database class object
 			sqldb = new Database("person_db");
 			//Gets ImageButton object instances
@@ -104,6 +106,18 @@ namespace ContestHelper
 			};
 			//Add ItemClick event handler to ListView instance
 			listItems.ItemClick += new EventHandler<AdapterView.ItemClickEventArgs> (item_Clicked);
+		}
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+			case Android.Resource.Id.Home:
+				Finish();
+				return true;
+
+			default:
+				return base.OnOptionsItemSelected(item);
+			}
 		}
 		//Launched when a ListView item is clicked
 		void item_Clicked (object sender, AdapterView.ItemClickEventArgs e)
