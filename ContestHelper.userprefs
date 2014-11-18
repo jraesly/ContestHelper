@@ -1,10 +1,12 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.MonoForAndroid_API_12" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ContestHelper\pickDate.cs">
     <Files>
-      <File FileName="ContestHelper\MainActivity.cs" Line="36" Column="36" />
-      <File FileName="ContestHelper\addnewevent.cs" Line="30" Column="30" />
-      <File FileName="ContestHelper\ChosenDate.cs" Line="36" Column="36" />
+      <File FileName="c:\Users\John\Documents\jraesly\ContestHelper.git\ContestHelper\addnewevent.cs" Line="38" Column="38" />
+      <File FileName="ContestHelper\Database.cs" Line="7" Column="7" />
+      <File FileName="ContestHelper\ChosenDate.cs" Line="3" Column="3" />
+      <File FileName="ContestHelper\MainActivity.cs" Line="1" Column="1" />
+      <File FileName="ContestHelper\pickDate.cs" Line="15" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -75,23 +75,23 @@ namespace ContestHelper
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f06000f
-			public const int Addcontest = 2131099663;
-			
-			// aapt resource value: 0x7f060013
-			public const int Age_row = 2131099667;
-			
-			// aapt resource value: 0x7f06000e
-			public const int Choosedate = 2131099662;
-			
 			// aapt resource value: 0x7f060010
-			public const int Id_row = 2131099664;
+			public const int Addcontest = 2131099664;
 			
-			// aapt resource value: 0x7f060012
-			public const int LastName_row = 2131099666;
+			// aapt resource value: 0x7f060014
+			public const int Age_row = 2131099668;
+			
+			// aapt resource value: 0x7f06000f
+			public const int Choosedate = 2131099663;
 			
 			// aapt resource value: 0x7f060011
-			public const int Name_row = 2131099665;
+			public const int Id_row = 2131099665;
+			
+			// aapt resource value: 0x7f060013
+			public const int LastName_row = 2131099667;
+			
+			// aapt resource value: 0x7f060012
+			public const int Name_row = 2131099666;
 			
 			// aapt resource value: 0x7f06000b
 			public const int age = 2131099659;
@@ -122,6 +122,9 @@ namespace ContestHelper
 			
 			// aapt resource value: 0x7f060009
 			public const int name = 2131099657;
+			
+			// aapt resource value: 0x7f06000e
+			public const int pickDate = 2131099662;
 			
 			// aapt resource value: 0x7f060007
 			public const int shMsg = 2131099655;
@@ -181,6 +184,9 @@ namespace ContestHelper
 			
 			// aapt resource value: 0x7f040001
 			public const int choosedate = 2130968577;
+			
+			// aapt resource value: 0x7f040003
+			public const int datePicker = 2130968579;
 			
 			static String()
 			{

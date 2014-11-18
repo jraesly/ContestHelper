@@ -8,6 +8,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/datePicker1" />
     <Button
+        android:text="Pick a New Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pickDate" />
+    <Button
         android:text="Choose Date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

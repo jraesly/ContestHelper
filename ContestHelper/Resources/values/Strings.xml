@@ -3,4 +3,5 @@
 	<string name="app_name">ContestHelper</string>
 	<string name="choosedate">Choose Date</string>
 	<string name="addcontest">Add New Event</string>
+	<string name="datePicker">Pick Date</string>
 </resources>

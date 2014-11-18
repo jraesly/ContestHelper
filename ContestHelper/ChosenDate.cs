@@ -12,6 +12,7 @@ namespace ContestHelper
 	[Activity (Label = "Contest Helper", Icon="@drawable/Icon")]            
 	public class chosenDate : Activity
 	{
+		
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -20,6 +21,7 @@ namespace ContestHelper
 			SetContentView (Resource.Layout.Datelist);
 			ActionBar.SetHomeButtonEnabled (true);
 			ActionBar.SetDisplayHomeAsUpEnabled (true);
+
 		}
 			public override bool OnOptionsItemSelected(IMenuItem item)
 			{
