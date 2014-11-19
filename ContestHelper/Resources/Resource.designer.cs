@@ -97,7 +97,7 @@ namespace ContestHelper
 			public const int age = 2131099659;
 			
 			// aapt resource value: 0x7f06000d
-			public const int datePicker1 = 2131099661;
+			public const int dateDisplay = 2131099661;
 			
 			// aapt resource value: 0x7f060008
 			public const int id = 2131099656;

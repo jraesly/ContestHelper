@@ -1,4 +1,14 @@
-﻿//Required assemblies
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+//Required assemblies
 using Android.Database.Sqlite;
 using System.IO;
 
@@ -58,7 +68,7 @@ namespace ContestHelper
 				if(!sqldb_exists)
 				{
 					sqldb = SQLiteDatabase.OpenOrCreateDatabase(sqldb_path,null);
-					sqldb_query = "CREATE TABLE IF NOT EXISTS MyTable ( _id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR, LastName VARCHAR, Age INT);";
+					sqldb_query = "CREATE TABLE IF NOT EXISTS MyTable (_id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR, LastName VARCHAR, Age INT);";
 					sqldb.ExecSQL(sqldb_query);
 					sqldb_message = "Database: " + sqldb_name + " created";
 				}

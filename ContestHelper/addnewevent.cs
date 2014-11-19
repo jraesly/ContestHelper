@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-//Required assemblies
-using Android.Database.Sqlite;
-using System.IO;
-
+using Android.OS;
 
 namespace ContestHelper
 {
@@ -30,6 +23,18 @@ namespace ContestHelper
 		//ListView object for displaying data from database
 		ListView listItems;
 		//Launches the Create event for app
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+			case Android.Resource.Id.Home:
+				Finish();
+				return true;
+
+			default:
+				return base.OnOptionsItemSelected(item);
+			}
+		}
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -70,7 +75,6 @@ namespace ContestHelper
 				shMsg.Text = sqldb.Message;
 				txtName.Text = txtAge.Text = txtLastName.Text = "";
 				GetCursorView();
-
 			};
 
 			imgDelete.Click += delegate {
@@ -139,7 +143,7 @@ namespace ContestHelper
 					Resource.Id.Age_row
 				};
 				//Creates a SimplecursorAdapter for ListView object
-				SimpleCursorAdapter sqldb_adapter = new SimpleCursorAdapter(this, Resource.Layout.Recordslayout, sqldb_cursor, from, to);
+				SimpleCursorAdapter sqldb_adapter = new SimpleCursorAdapter (this, Resource.Layout.Recordslayout, sqldb_cursor, from, to);
 				listItems.Adapter = sqldb_adapter;
 			} 
 			else 

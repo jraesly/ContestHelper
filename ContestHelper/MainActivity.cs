@@ -27,16 +27,25 @@ namespace ContestHelper
 			
 			Button choosedate = FindViewById<Button>(Resource.Id.Choosedate);
 			Button addcontest = FindViewById<Button>(Resource.Id.Addcontest);
+			Button pickdate = FindViewById<Button> (Resource.Id.pickDate);
+
+			pickdate.Click += (object sender, EventArgs e) => {
+				var datepicker = new Intent (this, typeof(DatePicker));
+				StartActivity (datepicker);
+
+			};
 
 			choosedate.Click += (object sender, EventArgs e) => {
 				var chosendate = new Intent (this, typeof(chosenDate));
 
 				StartActivity (chosendate);
 			};
+
 			addcontest.Click += (object sender, EventArgs e) => {
 				var addevent = new Intent (this, typeof(addnewevent));
 				StartActivity (addevent);
 			};
+
 		}
 
 	}

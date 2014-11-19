@@ -51,7 +51,7 @@
     <Compile Include="Randomizer.cs" />
     <Compile Include="ChosenDate.cs" />
     <Compile Include="addnewevent.cs" />
-    <Compile Include="pickDate.cs" />
+    <Compile Include="DatePicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
