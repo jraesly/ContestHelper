@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace ContestHelper
 {
-	[Activity (Label = "Contest Helper", MainLauncher = true, Icon="@drawable/Icon")]
+	[Activity (Label = "Contest Helper", Icon="@drawable/Icon")]
 
 	public class DatePicker : Activity
 	{
@@ -27,7 +27,7 @@ namespace ContestHelper
 	protected override void OnCreate (Bundle savedInstanceState)
 	{
 		base.OnCreate (savedInstanceState);
-		SetContentView (Resource.Layout.Main);
+			SetContentView (Resource.Layout.Main);
 
 		// capture our View elements
 		dateDisplay = FindViewById<TextView> (Resource.Id.dateDisplay);
