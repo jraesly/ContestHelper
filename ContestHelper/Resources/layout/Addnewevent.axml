@@ -37,6 +37,15 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="#ffffffff" />
+        <TextView
+            android:text="Email"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#ffffffff" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -59,6 +68,12 @@
         <EditText
             android:inputType="number"
             android:id="@+id/txtAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <EditText
+            android:inputType="textEmailAddress"
+            android:id="@+id/txtemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -160,6 +175,15 @@
             android:textSize="20dp"
             android:gravity="center"
             android:id="@+id/age" />
+        <TextView
+            android:text="Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:id="@+id/email" />
     </LinearLayout>
     <ListView
         android:minWidth="25px"

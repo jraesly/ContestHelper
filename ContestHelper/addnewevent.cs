@@ -15,7 +15,7 @@ namespace ContestHelper
 		//Database class new object
 		Database sqldb;
 		//Name, LastName and Age EditText objects for data input
-		EditText txtName, txtAge, txtLastName;
+		EditText txtName, txtAge, txtLastName, txtEmail;
 		//Message TextView object for displaying data
 		TextView shMsg;
 		//Add, Edit, Delete and Search ImageButton objects for events handling
@@ -53,6 +53,8 @@ namespace ContestHelper
 			txtAge = FindViewById<EditText> (Resource.Id.txtAge);
 			txtLastName = FindViewById<EditText> (Resource.Id.txtLastName);
 			txtName = FindViewById<EditText> (Resource.Id.txtName);
+			txtEmail = FindViewById<EditText> (Resource.Id.txtemail);
+
 			//Gets TextView object instances
 			shMsg = FindViewById<TextView> (Resource.Id.shMsg);
 			//Gets ListView object instance
@@ -62,18 +64,18 @@ namespace ContestHelper
 			//Creates ImageButton click event for imgAdd, imgEdit, imgDelete and imgSearch
 			imgAdd.Click += delegate {
 				//Calls function AddRecord for adding a new record
-				sqldb.AddRecord (txtName.Text, txtLastName.Text, int.Parse (txtAge.Text));
+				sqldb.AddRecord (txtName.Text, txtLastName.Text, int.Parse (txtAge.Text), txtEmail.Text);
 				shMsg.Text = sqldb.Message;
-				txtName.Text = txtAge.Text = txtLastName.Text = "";
+				txtName.Text = txtAge.Text = txtLastName.Text = txtEmail.Text = "";
 				GetCursorView();
 			};
 
 			imgEdit.Click += delegate {
 				int iId = int.Parse(shMsg.Text);
 				//Calls UpdateRecord function for updating an existing record
-				sqldb.UpdateRecord (iId, txtName.Text, txtLastName.Text, int.Parse (txtAge.Text));
+				sqldb.UpdateRecord (iId, txtName.Text, txtLastName.Text, int.Parse (txtAge.Text), txtEmail.Text);
 				shMsg.Text = sqldb.Message;
-				txtName.Text = txtAge.Text = txtLastName.Text = "";
+				txtName.Text = txtAge.Text = txtLastName.Text = txtEmail.Text = "";
 				GetCursorView();
 			};
 
@@ -103,7 +105,16 @@ namespace ContestHelper
 						{
 							sqldb_column = "Age";
 							GetCursorView (sqldb_column, txtAge.Text.Trim ());
-						} else 
+						} 
+				else
+				//Adding new fields
+				//We're adding the new field "BirthDay" for search criteria
+					if(txtEmail.Text.Trim()!="")
+				{
+					sqldb_column = "Email";
+								GetCursorView(sqldb_column, txtEmail.Text.Trim());
+				}
+						else 
 						{
 							GetCursorView ();
 							sqldb_column = "All";
@@ -121,10 +132,15 @@ namespace ContestHelper
 			TextView shName = e.View.FindViewById<TextView> (Resource.Id.Name_row);
 			TextView shLastName = e.View.FindViewById<TextView> (Resource.Id.LastName_row);
 			TextView shAge = e.View.FindViewById<TextView> (Resource.Id.Age_row);
+			TextView shEmail = e.View.FindViewById<TextView> (Resource.Id.Email_row);
+
+
 			//Reads values and sets to EditText object instances
 			txtName.Text = shName.Text;
 			txtLastName.Text = shLastName.Text;
 			txtAge.Text = shAge.Text;
+			txtEmail.Text = shEmail.Text;
+
 			//Displays messages for CRUD operations
 			shMsg.Text = shId.Text;
 		}
@@ -135,22 +151,26 @@ namespace ContestHelper
 			if (sqldb_cursor != null) 
 			{
 				sqldb_cursor.MoveToFirst ();
-				string[] from = new string[] {"_id","Name","LastName","Age" };
-				int[] to = new int[] {
+				string[] from = new string[] {"_id","Name","LastName","Age","Email" };
+				int[] to = new int[] 
+				{
 					Resource.Id.Id_row,
 					Resource.Id.Name_row,
 					Resource.Id.LastName_row,
-					Resource.Id.Age_row
+					Resource.Id.Age_row,
+					Resource.Id.Email_row
+
 				};
 				//Creates a SimplecursorAdapter for ListView object
 				SimpleCursorAdapter sqldb_adapter = new SimpleCursorAdapter (this, Resource.Layout.Recordslayout, sqldb_cursor, from, to);
 				listItems.Adapter = sqldb_adapter;
-			} 
+			}
 			else 
 			{
 				shMsg.Text = sqldb.Message;
 			}
 		}
+		
 		//Gets the cursor view to show records according to search criteria
 		void GetCursorView (string sqldb_column, string sqldb_value)
 		{
@@ -159,13 +179,15 @@ namespace ContestHelper
 			if (sqldb_cursor != null) 
 			{
 				sqldb_cursor.MoveToFirst ();
-				string[] from = new string[] {"_id","Name","LastName","Age" };
+				string[] from = new string[] {"_id","Name","LastName","Age","Email" };
 				int[] to = new int[] 
 				{
 					Resource.Id.Id_row,
 					Resource.Id.Name_row,
 					Resource.Id.LastName_row,
-					Resource.Id.Age_row
+					Resource.Id.Age_row,
+					Resource.Id.Email_row
+
 				};
 				SimpleCursorAdapter sqldb_adapter = new SimpleCursorAdapter (this, Resource.Layout.Recordslayout, sqldb_cursor, from, to);
 				listItems.Adapter = sqldb_adapter;
